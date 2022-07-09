@@ -1,0 +1,12 @@
+version: '3'
+services:
+  db:
+    container_name: mysql-5.7
+    image: mysql:5.7
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - "/var/dados/mysql:/var/lib/mysql"
+    ports:
+      - 3306:3306
