@@ -1,0 +1,29 @@
+[user]
+    name = Cayque Santos
+    email = cayque_santos16@hotmail.com
+
+# Remover arquivo do monitoramento
+#     git rm -r --cached <arquivo>
+# Definir usuario e email
+#     git config --global user.name "Cayque Santos"
+#     git config --global user.email cayque_santos16@hotmail.com
+# Formata log: data | hash | autor mensagem
+#     git log --pretty=format:"%cd | %h | %cn %s" --date=format:%c --grep=<filtro>
+# Busca arquivos alterados em um determinado commit
+#     git diff-tree --no-commit-id --name-only -f <hash-commit>
+# Git log em uma linha
+#     git log --pretty=oneline
+
+[alias]
+    # Git log em uma linha
+    log-linha = !sh -c 'git log --pretty=oneline' -
+    # Busca arquivos alterados em um determinado commit
+    busca-arquivos = !sh -c 'git diff-tree --no-commit-id --name-only -r $1' -
+    # Cria um branch de feature com o nome passado
+    criar-feature = !sh -c 'git checkout -b feature/$1' -
+    # Cria um branch de projeto com o nome passado
+    criar-projeto = !sh -c 'git checkout -b projeto/$1' -
+    # Listar branches de features
+    features = !sh -c 'git for-each-ref --format=\"%(refname:short)\" refs/heads/feature' -
+    # Listar branches de projetos
+    projetos = !sh -c 'git for-each-ref --format=\"%(refname:short)\" refs/heads/projeto' -
