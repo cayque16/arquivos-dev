@@ -13,6 +13,8 @@
 #     git diff-tree --no-commit-id --name-only -f <hash-commit>
 # Git log em uma linha
 #     git log --pretty=oneline
+# Exibe o nome do branch no terminaĺ
+#     export PS1='\u@\h\[\033[01;34m\] \w\[\033[0;32m\]$(__git_ps1 " (%s)")\[\033[01;34m\]$\[\033[00m\] '
 
 [alias]
     # Git log em uma linha
