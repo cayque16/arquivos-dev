@@ -8,5 +8,6 @@ services:
       - ./.env
     volumes:
       - "/var/dados/mysql:/var/lib/mysql"
+      - "/home/cayque/Documentos/backups/dumps-base-filmes:/var/dumps"
     ports:
       - 3306:3306
