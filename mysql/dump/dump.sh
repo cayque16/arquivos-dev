@@ -1,1 +1,0 @@
-sh -c "/usr/bin/mysqldump -h db -uroot -p${MYSQL_ROOT_PASSWORD} filmes > /var/db/dump-filmes.sql"
