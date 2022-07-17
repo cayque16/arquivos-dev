@@ -1,22 +1,22 @@
 #!/bin/bash
 echo "------------DUMP BASE FILMES------------"
 docker exec mysql-5.7 sh -c 'exec mysqldump filmes -uroot -p"$MYSQL_ROOT_PASSWORD"' > ~/Documentos/backups/dumps-base-filmes/dump-filmes.sql
-# echo "------------COPIANDO ARQUIVOS DE CONFIGURACAO------------"
-# cp ~/.gitconfig /var/www/arquivos-dev/.gitconfig.example
-# echo "------------COMPACTANDO BACKUP------------"
-# pastas_origem="/var/www/ /home/cayque/Documentos/backups/"
+echo "------------COPIANDO ARQUIVOS DE CONFIGURACAO------------"
+cp ~/.gitconfig /var/www/arquivos-dev/.gitconfig.example
+echo "------------COMPACTANDO BACKUP------------"
+pastas_origem="/var/www/ /home/cayque/Documentos/backups/"
 
-# destino="/media/cayque/CAYQUE_1TB/BKP_PC10"
+destino="/media/cayque/CAYQUE_1TB/BKP_PC10"
 
-# data=$(date +%Y-%m-%d)
-# hostname=$(hostname -s)
-# arquivo_final="$hostname"_"$data.tgz"
+data=$(date +%Y-%m-%d)
+hostname=$(hostname -s)
+arquivo_final="$hostname"_"$data.tgz"
 
-# tar czf $destino/$arquivo_final $pastas_origem
+tar czf $destino/$arquivo_final $pastas_origem
 
-# # Busca todos os arquivos de backup e exclui os mais velhos, mantendo sempre os tres mais novos
-# ls -1 $destino/$hostname*.tgz | sort -r | tail -n +4 | xargs rm > /dev/null 2>&1
+# Busca todos os arquivos de backup e exclui os mais velhos, mantendo sempre os tres mais novos
+ls -1 $destino/$hostname*.tgz | sort -r | tail -n +4 | xargs rm > /dev/null 2>&1
 
-# ls -lh $destino
+ls -lh $destino
 
-# echo "------------FIM------------"
+echo "------------FIM------------"
