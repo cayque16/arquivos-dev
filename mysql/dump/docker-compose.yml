@@ -1,0 +1,15 @@
+version: '3'
+services:
+  dump:
+    container_name: my_dump
+    build: .
+    volumes:
+      - /home/cayque/Documentos/backups/dumps-base-filmes:/var/db/
+    command: sh ./dump.sh
+    env_file:
+      - ../.env
+
+networks:
+  default:
+    name: mysql_default
+    external: true
