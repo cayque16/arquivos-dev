@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "------------DUMP BASE FILMES------------"
 docker exec mysql-5.7 sh -c 'exec mysqldump filmes -uroot -p"$MYSQL_ROOT_PASSWORD"' > ~/Documentos/backups/dumps-base-filmes/dump-filmes.sql
+docker exec mysql-5.7 sh -c 'exec mysqldump meu_financeiro -uroot -p"$MYSQL_ROOT_PASSWORD"' > ~/Documentos/backups/dumps-base-meu_financeiro/dump-meu_financeiro.sql
 echo "------------COPIANDO ARQUIVOS DE CONFIGURACAO------------"
 cp ~/.gitconfig /var/www/arquivos-dev/.gitconfig.example
 
