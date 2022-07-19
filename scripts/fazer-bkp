@@ -3,6 +3,12 @@ echo "------------DUMP BASE FILMES------------"
 docker exec mysql-5.7 sh -c 'exec mysqldump filmes -uroot -p"$MYSQL_ROOT_PASSWORD"' > ~/Documentos/backups/dumps-base-filmes/dump-filmes.sql
 echo "------------COPIANDO ARQUIVOS DE CONFIGURACAO------------"
 cp ~/.gitconfig /var/www/arquivos-dev/.gitconfig.example
+
+qtde_linhas=117
+qtde_linhas_atual=$(wc -l ~/.bashrc | cut -d " " -f 1)
+result=$(($qtde_linhas_atual-$qtde_linhas))
+tail ~/.bashrc -n $result > /var/www/arquivos-dev/adicoes-bashrc.txt
+
 echo "------------COMPACTANDO BACKUP------------"
 pastas_origem="/var/www/ /home/cayque/Documentos/backups/"
 
