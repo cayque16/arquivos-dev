@@ -2,6 +2,8 @@ alias gerencia-api='cd /var/www/Gerencia-Filmes-API/'
 alias android-studio='/home/cayque/Documentos/android-studio/bin/./studio.sh'
 alias arquivos-dev='cd /var/www/arquivos-dev'
 alias abrircode='code /var/www'
+alias sail='bash /var/www/meu-financeiro/vendor/bin/sail'
+alias meu-financeiro='cd /var/www/meu-financeiro'
 
 export PS1='\u@\h\[\033[01;34m\] \w\[\033[0;32m\]$(__git_ps1 " (%s)")\[\033[01;34m\]$\[\033[00m\] '
 export PATH=$PATH:/var/www/arquivos-dev/scripts/
