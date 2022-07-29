@@ -1,20 +1,25 @@
 #!/bin/bash
-echo "------------DUMP BASE FILMES------------"
-docker exec mysql-5.7 sh -c 'exec mysqldump filmes -uroot -p"$MYSQL_ROOT_PASSWORD"' > ~/Documentos/backups/dumps-base-filmes/dump-filmes.sql
-docker exec mysql-5.7 sh -c 'exec mysqldump meu_financeiro -uroot -p"$MYSQL_ROOT_PASSWORD"' > ~/Documentos/backups/dumps-base-meu_financeiro/dump-meu_financeiro.sql
-echo "------------COPIANDO ARQUIVOS DE CONFIGURACAO------------"
-cp ~/.gitconfig /var/www/arquivos-dev/.gitconfig.example
+PASTA_LOGS="/var/log/meus-scripts"
+ARQUIVO_LOG="${PASTA_LOGS}/logs-fazer-bkp.txt"
 
-# https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html
-# testar esse comando para gerar o dump das tabelas da base meu_financeiro
-# mysqldump -u -p --extended-insert --no-create-info $data_base $tabela > /var/backups/teste.sql;
+# Cria a pasta de logs, se ele nao existir
+mkdir -p "${PASTA_LOGS}"
+echo "" >> "${ARQUIVO_LOG}"
+echo [`date`] "==== INICIO DA EXECUÇÃO ====" >> "$ARQUIVO_LOG"
+echo [`date`] "---> DUMP BASE FILMES" >> "$ARQUIVO_LOG"
+docker exec mysql-5.7 sh -c 'exec mysqldump filmes -uroot -p"$MYSQL_ROOT_PASSWORD"' > ~/Documentos/backups/dumps-base-filmes/dump-filmes.sql
+echo [`date`] "---> DUMP BASE MEU FINANCEIRO" >> "$ARQUIVO_LOG"
+# Gera o dump somente dos inserts
+docker exec mysql-5.7 sh -c 'exec mysqldump meu_financeiro -uroot -p"$MYSQL_ROOT_PASSWORD" --extended-insert --no-create-info' > ~/Documentos/backups/dumps-base-meu_financeiro/dump-meu_financeiro.sql
+echo [`date`] "---> COPIANDO ARQUIVOS DE CONFIGURACAO" >> "$ARQUIVO_LOG"
+cp ~/.gitconfig /var/www/arquivos-dev/.gitconfig.example
 
 qtde_linhas=117
 qtde_linhas_atual=$(wc -l ~/.bashrc | cut -d " " -f 1)
 result=$(($qtde_linhas_atual-$qtde_linhas))
 tail ~/.bashrc -n $result > /var/www/arquivos-dev/adicoes-bashrc.txt
 
-echo "------------COMPACTANDO BACKUP------------"
+echo [`date`] "---> COMPACTANDO BACKUP" >> "$ARQUIVO_LOG"
 pastas_origem="/var/www/ /home/cayque/Documentos/backups/"
 
 destino="/media/cayque/CAYQUE_1TB/BKP_PC10"
@@ -30,4 +35,4 @@ ls -1 $destino/$hostname*.tgz | sort -r | tail -n +4 | xargs rm > /dev/null 2>&1
 
 ls -lh $destino
 
-echo "------------FIM------------"
+echo [`date`] "==== FIM DA EXECUÇÃO ====" >> "$ARQUIVO_LOG"
