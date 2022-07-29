@@ -1,0 +1,6 @@
+#!/bin/bash
+IMAGE="php"
+VERSION="latest"
+WORKDIR="/usr/src/myapp"
+
+docker run --rm --name php-teste -ti -v "$PWD":"$WORKDIR" -w "$WORKDIR" "$IMAGE":"$VERSION" php "${@}"
