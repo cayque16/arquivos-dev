@@ -13,6 +13,7 @@ echo [`date`] "---> DUMP BASE MEU FINANCEIRO" >> "$ARQUIVO_LOG"
 docker exec mysql-5.7 sh -c 'exec mysqldump meu_financeiro -uroot -p"$MYSQL_ROOT_PASSWORD" --extended-insert --no-create-info' > ~/Documentos/backups/dumps-base-meu_financeiro/dump-meu_financeiro.sql
 echo [`date`] "---> COPIANDO ARQUIVOS DE CONFIGURACAO" >> "$ARQUIVO_LOG"
 cp ~/.gitconfig /var/www/arquivos-dev/.gitconfig.example
+cp ~/.config/Code/User/settings.json /var/www/arquivos-dev/meu-vscode-settings.json
 
 qtde_linhas=117
 qtde_linhas_atual=$(wc -l ~/.bashrc | cut -d " " -f 1)

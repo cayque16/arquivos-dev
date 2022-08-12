@@ -1,0 +1,12 @@
+{
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.editor.untitled.hint": "hidden",
+    "editor.minimap.enabled": false,
+    "workbench.startupEditor": "none",
+    "docker.commands.attach": "${config:docker.dockerPath} exec -it ${containerId} ${shellCommand}",
+    "docker.commands.build": "${config:docker.dockerPath} build --pull --rm -f \"${dockerfile}\" -t ${tag} \"${context}\"",
+    "workbench.editor.showTabs": true,
+    "workbench.editor.enablePreview": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.rulers": [80]
+}

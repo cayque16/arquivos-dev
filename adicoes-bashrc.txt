@@ -4,6 +4,7 @@ alias arquivos-dev='cd /var/www/arquivos-dev'
 alias abrircode='code /var/www'
 alias sail='bash /var/www/meu-financeiro/vendor/bin/sail'
 alias meu-financeiro='cd /var/www/meu-financeiro'
+alias cria-view='bash /var/www/meu-financeiro/scripts/views/cria-view'
 
 export PS1='\u@\h\[\033[01;34m\] \w\[\033[0;32m\]$(__git_ps1 " (%s)")\[\033[01;34m\]$\[\033[00m\] '
 export PATH=$PATH:/var/www/arquivos-dev/scripts/
