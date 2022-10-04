@@ -10,7 +10,10 @@ services:
       - PGID=1000
       - VERSION=docker
     volumes:
-      - /path/to/library:/config
-      - /path/to/tvseries:/home/cayque/series
-      - /path/to/movies:/home/cayque/filmes
+      - config-plex:/config
+      - /home/cayque/series:/tv
+      - /home/cayque/filmes:/movies
     restart: always
+
+volumes:
+  config-plex
